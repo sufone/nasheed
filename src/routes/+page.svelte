@@ -13,10 +13,10 @@
 <section>
 	<h1>
 		<span class="welcome">
-			<picture>
+			<!-- <picture>
 				<source srcset={welcome} type="image/webp" />
 				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
+			</picture> -->
 		</span>
 
 
