@@ -245,12 +245,11 @@
 
 	import audios from '$lib/sources.js';
 
-    function getRandomInt(min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min;
+    function newRandomAudio() {
+		return Math.floor(Math.random() * audios.length);
 	};
-	let random = getRandomInt(0, audios.length - 1) // array is 0-index but length is 1-index
-
-	console.log(audios.length ); 
+	let random = newRandomAudio()
+	console.log(random); 
 	/* Implementation of the presentation of the audio player */
 </script>
 
