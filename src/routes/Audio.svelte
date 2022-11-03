@@ -243,11 +243,14 @@
 		}
 	});
 
+    import audios from '$lib/sources.js';
+
+    console.log(audios)
 	/* Implementation of the presentation of the audio player */
 </script>
 
 <div id="audio-player-container">
-	<audio src="/audio/hanini1.mp3" preload="metadata" loop />
+	<audio src="/audio/{audios[1].filename}.mp3" preload="metadata" loop />
 	<p>audio player ish</p>
 	<button id="play-icon" />
 	<span id="current-time" class="time">0:00</span>
