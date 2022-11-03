@@ -250,7 +250,7 @@
 	generateRandomNumber();
 
 	function generateRandomNumber() {
-		let newRandomNumber = Math.floor(Math.random() * 2);
+		let newRandomNumber = Math.floor(Math.random() * audios.length);
 
 		// handle ini: simple
 		if (typeof currentTrack == undefined) {
@@ -262,7 +262,7 @@
 				if (newRandomNumber === 0) {
 					// handles the edge case of going negative
                     previousTrack = currentTrack;
-					currentTrack = newRandomNumber + 1;
+					currentTrack = (newRandomNumber + 1);
 				} else {
                     previousTrack = currentTrack;
 					currentTrack = newRandomNumber - 1;
