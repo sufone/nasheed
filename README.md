@@ -14,6 +14,7 @@
 - re-introduce header and footer from layout file
 - setup nasheed.app domain on cloudflare
 - add more off my favs from yt
+- make portaits all square 
 
 
 ## Developing

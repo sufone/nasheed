@@ -261,13 +261,13 @@
 			if (newRandomNumber === currentTrack || newRandomNumber === previousTrack) {
 				if (newRandomNumber === 0) {
 					// handles the edge case of going negative
-                    previousTrack = currentTrack;
-					currentTrack = (newRandomNumber + 1);
+					previousTrack = currentTrack;
+					currentTrack = newRandomNumber + 1;
 				} else {
-                    previousTrack = currentTrack;
+					previousTrack = currentTrack;
 					currentTrack = newRandomNumber - 1;
 				}
-                // handle
+				// handle
 			} else {
 				previousTrack = currentTrack;
 				currentTrack = newRandomNumber;
@@ -277,6 +277,12 @@
 	}
 </script>
 
+<img
+	alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
+	loading="lazy"
+	src="/portraits/{audios[currentTrack].author}.jpg"
+	onerror="this.onerror=null; this.src='/portraits/الله.jpg'"
+/>
 <h2>{audios[currentTrack].author}</h2>
 <h1>{audios[currentTrack].qasidah}</h1>
 <div id="audio-player-container">
@@ -293,6 +299,11 @@
 <button on:click={() => generateRandomNumber()}>التالي</button>
 
 <style>
+	img {
+		border-radius: 50%;
+		width: 200px;
+		height: 200px;
+	}
 	button {
 		padding: 0;
 		border: 0;
