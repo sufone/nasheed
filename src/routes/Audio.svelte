@@ -277,12 +277,12 @@
 	}
 </script>
 
-<img
+<!-- <img
 	alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
 	loading="lazy"
 	src="/portraits/{audios[currentTrack].author}.jpg"
 	onerror="this.onerror=null; this.src='/portraits/الله.jpg'"
-/>
+/> -->
 <h2>{audios[currentTrack].author}</h2>
 <h1>{audios[currentTrack].qasidah}</h1>
 <div id="audio-player-container">
