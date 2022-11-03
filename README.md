@@ -5,6 +5,7 @@
 ## Plan
 
 - Trim opening and ending silences from all audios (ffmpeg automate) - so can be programmatically optimized client size
+- optimize mp3s (avoid compressing until last choice, and even then: backup to D drive!)
 - Use anwar al khalaf font - add dua for authors
 - make title using aref ruqaa color
 - use md3 style
