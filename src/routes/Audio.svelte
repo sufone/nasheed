@@ -245,18 +245,42 @@
 
 	import audios from '$lib/sources.js';
 
-    function newRandomAudio() {
-		return Math.floor(Math.random() * audios.length);
-	};
-	let random = newRandomAudio()
-	console.log(random); 
-	/* Implementation of the presentation of the audio player */
+	let currentTrack;
+	let previousTrack;
+	generateRandomNumber();
+
+	function generateRandomNumber() {
+		let newRandomNumber = Math.floor(Math.random() * 2);
+
+		// handle ini: simple
+		if (typeof currentTrack == undefined) {
+			console.log(newRandomNumber);
+			currentTrack = newRandomNumber;
+		} else {
+			// handle randomly playing the same or previous track
+			if (newRandomNumber === currentTrack || newRandomNumber === previousTrack) {
+				if (newRandomNumber === 0) {
+					// handles the edge case of going negative
+                    previousTrack = currentTrack;
+					currentTrack = newRandomNumber + 1;
+				} else {
+                    previousTrack = currentTrack;
+					currentTrack = newRandomNumber - 1;
+				}
+                // handle
+			} else {
+				previousTrack = currentTrack;
+				currentTrack = newRandomNumber;
+			}
+		}
+		console.log(currentTrack);
+	}
 </script>
 
-<h2>{audios[random].author}</h2>
-<h1>{audios[random].qasidah}</h1>
+<h2>{audios[currentTrack].author}</h2>
+<h1>{audios[currentTrack].qasidah}</h1>
 <div id="audio-player-container">
-	<audio src="/audio/{audios[random].filename}.mp3" preload="metadata" loop />
+	<audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 	<p>audio player ish</p>
 	<button id="play-icon" />
 	<span id="current-time" class="time">0:00</span>
@@ -266,6 +290,7 @@
 	<input type="range" id="volume-slider" max="100" value="100" />
 	<button id="mute-icon" />
 </div>
+<button on:click={() => generateRandomNumber()}>التالي</button>
 
 <style>
 	button {
