@@ -1,18 +1,19 @@
-# create-svelte
+# Nasheed.app
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Plan
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Trim opening and ending silences from all audios (ffmpeg automate) - so can be programmatically optimized client size
+- Use anwar al khalaf font - add dua for authors
+- make title using aref ruqaa color
+- use md3 style
+- use blaze slider for circle shaped author portait, sliding loads a new track (and vice versa: new track means slide in)!
+- optimize author portaits, use svelte-image
+- re-introduce header and footer from layout file
+- setup nasheed.app domain on cloudflare
+- add more off my favs from yt
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
 ## Developing
 
