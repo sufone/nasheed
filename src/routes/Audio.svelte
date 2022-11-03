@@ -2,7 +2,7 @@
 	// @ts-nocheck
 
 	import { onMount } from 'svelte';
-    import lottieWeb from 'lottie-web'
+	import lottieWeb from 'lottie-web';
 
 	onMount(async () => {
 		const playIconContainer = document.getElementById('play-icon');
@@ -243,14 +243,21 @@
 		}
 	});
 
-    import audios from '$lib/sources.js';
+	import audios from '$lib/sources.js';
 
-    console.log(audios)
+    function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	};
+	let random = getRandomInt(0, audios.length - 1) // array is 0-index but length is 1-index
+
+	console.log(audios.length ); 
 	/* Implementation of the presentation of the audio player */
 </script>
 
+<h2>{audios[random].author}</h2>
+<h1>{audios[random].qasidah}</h1>
 <div id="audio-player-container">
-	<audio src="/audio/{audios[1].filename}.mp3" preload="metadata" loop />
+	<audio src="/audio/{audios[random].filename}.mp3" preload="metadata" loop />
 	<p>audio player ish</p>
 	<button id="play-icon" />
 	<span id="current-time" class="time">0:00</span>
