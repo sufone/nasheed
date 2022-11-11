@@ -10,7 +10,7 @@
 		let muteState = 'unmute';
 
 		// my additions
-		const nextButton = document.getElementById('next-icon');
+		// const nextButton = document.getElementById('next-icon');
 
 		playIconContainer.addEventListener('click', () => {
 			if (playState === 'play') {
@@ -22,9 +22,9 @@
 			}
 		});
 		// my addition for next song
-		nextButton.addEventListener('click', () => {
-			generateRandomNumber();
-		});
+		// nextButton.addEventListener('click', () => {
+		// 	generateRandomNumber();
+		// });
 
 
 		seekSlider.addEventListener('input', (e) => {
@@ -218,7 +218,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<span id="current-time" class="time">0:00</span>
 	<input type="range" id="seek-slider" max="100" value="0" />
 	<span id="duration" class="time">0:00</span>
-<button id="next-icon">التالي</button>
+<!-- <button id="next-icon">التالي</button> -->
 
 <style>
 	h1, h2 {
