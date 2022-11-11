@@ -13,8 +13,6 @@
 		// my additions
 		const nextButton = document.getElementById('next-icon');
 
-
-
 		playIconContainer.addEventListener('click', () => {
 			if (playState === 'play') {
 				audio.play();
@@ -26,22 +24,7 @@
 		});
 		// my addition for next song
 		nextButton.addEventListener('click', () => {
-			// if (playState === 'play') {
-			// 	audio.play();
-			// 	playAnimation.playSegments([14, 27], true);
-			// 	requestAnimationFrame(whilePlaying);
-			// 	playState = 'pause';
-			// } else {
-			// 	audio.pause();
-			// 	playAnimation.playSegments([0, 14], true);
-			// 	cancelAnimationFrame(raf);
-			// 	playState = 'play';
-			// }
-			// audio.pause();
-			// playState = 'pause';
 			generateRandomNumber();
-			// audio.play();
-			// playState = 'play';
 		});
 
 		const showRangeProgress = (rangeInput) => {
@@ -110,12 +93,10 @@
 
 		seekSlider.addEventListener('input', () => {
 			currentTimeContainer.textContent = calculateTime(seekSlider.value);
-			
 		});
 
 		seekSlider.addEventListener('change', () => {
 			audio.currentTime = seekSlider.value;
-	
 		});
 
 		/* Implementation of the Media Session API */
@@ -255,7 +236,9 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 <button id="next-icon">التالي</button>
 
 <style>
-	#current-time, #seek-slider, #duration {
+	#current-time,
+	#seek-slider,
+	#duration {
 		display: none;
 	}
 	img {
@@ -278,7 +261,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		--volume-before-width: 100%;
 		--buffered-width: 0%;
 		position: relative;
-		background-color: #006C46;
+		background-color: #006c46;
 		border-radius: 18px;
 		padding: 15px 15px;
 	}
@@ -304,7 +287,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		margin: 28.5px 0 18.5px 0;
 		float: left;
 	}
-		input[type='range'] {
+	input[type='range'] {
 		position: relative;
 		-webkit-appearance: none;
 		width: 48%;
