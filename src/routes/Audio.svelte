@@ -5,7 +5,6 @@
 
 	onMount(async () => {
 		const playIconContainer = document.getElementById('play-icon');
-		const audioPlayerContainer = document.getElementById('audio-player-container');
 		const seekSlider = document.getElementById('seek-slider');
 		let playState = 'play';
 		let muteState = 'unmute';
@@ -27,12 +26,6 @@
 			generateRandomNumber();
 		});
 
-		const showRangeProgress = (rangeInput) => {
-			audioPlayerContainer.style.setProperty(
-				'--seek-before-width',
-				(rangeInput.value / rangeInput.max) * 100 + '%'
-			);
-		};
 
 		seekSlider.addEventListener('input', (e) => {
 			showRangeProgress(e.target);
@@ -62,19 +55,13 @@
 
 		const displayBufferedAmount = () => {
 			const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
-			audioPlayerContainer.style.setProperty(
-				'--buffered-width',
-				`${(bufferedAmount / seekSlider.max) * 100}%`
-			);
+
 		};
 
 		const whilePlaying = () => {
 			seekSlider.value = Math.floor(audio.currentTime);
 			currentTimeContainer.textContent = calculateTime(seekSlider.value);
-			audioPlayerContainer.style.setProperty(
-				'--seek-before-width',
-				`${(seekSlider.value / seekSlider.max) * 100}%`
-			);
+
 		};
 
 		if (audio.readyState > 0) {
@@ -168,7 +155,6 @@
 			navigator.mediaSession.setActionHandler('stop', () => {
 				audio.currentTime = 0;
 				seekSlider.value = 0;
-				audioPlayerContainer.style.setProperty('--seek-before-width', '0%');
 				currentTimeContainer.textContent = '0:00';
 				if (playState === 'pause') {
 					playState = 'play';
@@ -225,17 +211,18 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <h2>{audios[currentTrack].author}</h2>
 <h1>{audios[currentTrack].qasidah}</h1>
-<div id="audio-player-container">
 	<audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 	<!-- <p>audio player ish</p> -->
-	<button id="play-icon" />
+	<button id="play-icon"><img src="/play.svg" /></button>
 	<span id="current-time" class="time">0:00</span>
 	<input type="range" id="seek-slider" max="100" value="0" />
 	<span id="duration" class="time">0:00</span>
-</div>
 <button id="next-icon">التالي</button>
 
 <style>
+	h1, h2 {
+		color: var(--color-theme-1)
+	}
 	#current-time,
 	#seek-slider,
 	#duration {
@@ -256,16 +243,6 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		height: 40px;
 		float: left;
 	}
-	#audio-player-container {
-		--seek-before-width: 0%;
-		--volume-before-width: 100%;
-		--buffered-width: 0%;
-		position: relative;
-		background-color: #006c46;
-		border-radius: 18px;
-		padding: 15px 15px;
-	}
-
 	p {
 		position: absolute;
 		top: -18px;
@@ -276,8 +253,15 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		background: #fff;
 	}
 	#play-icon {
-		/* margin: 20px 2.5% 10px 2.5%; */
-		stroke-opacity: 0;
+		width: 75px;
+		height: 75px;
+		background-color: #006c46;
+		border-radius: 18px;
+
+	}
+	#play-icon > img {
+		width: 60px;
+		height: 60px;
 	}
 	.time {
 		display: inline-block;
@@ -286,112 +270,5 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		font-size: 20px;
 		margin: 28.5px 0 18.5px 0;
 		float: left;
-	}
-	input[type='range'] {
-		position: relative;
-		-webkit-appearance: none;
-		width: 48%;
-		margin: 0;
-		padding: 0;
-		height: 19px;
-		margin: 30px 2.5% 20px 2.5%;
-		float: left;
-		outline: none;
-	}
-	input[type='range']::-webkit-slider-runnable-track {
-		width: 100%;
-		height: 3px;
-		cursor: pointer;
-		background: linear-gradient(
-			to right,
-			rgba(0, 125, 181, 0.6) var(--buffered-width),
-			rgba(0, 125, 181, 0.2) var(--buffered-width)
-		);
-	}
-	input[type='range']::before {
-		position: absolute;
-		content: '';
-		top: 8px;
-		left: 0;
-		width: var(--seek-before-width);
-		height: 3px;
-		background-color: #007db5;
-		cursor: pointer;
-	}
-	input[type='range']::-webkit-slider-thumb {
-		position: relative;
-		-webkit-appearance: none;
-		box-sizing: content-box;
-		border: 1px solid #007db5;
-		height: 15px;
-		width: 15px;
-		border-radius: 50%;
-		background-color: #fff;
-		cursor: pointer;
-		margin: -7px 0 0 0;
-	}
-	input[type='range']:active::-webkit-slider-thumb {
-		transform: scale(1.2);
-		background: #007db5;
-	}
-	input[type='range']::-moz-range-track {
-		width: 100%;
-		height: 3px;
-		cursor: pointer;
-		background: linear-gradient(
-			to right,
-			rgba(0, 125, 181, 0.6) var(--buffered-width),
-			rgba(0, 125, 181, 0.2) var(--buffered-width)
-		);
-	}
-	input[type='range']::-moz-range-progress {
-		background-color: #007db5;
-	}
-	input[type='range']::-moz-focus-outer {
-		border: 0;
-	}
-	input[type='range']::-moz-range-thumb {
-		box-sizing: content-box;
-		border: 1px solid #007db5;
-		height: 15px;
-		width: 15px;
-		border-radius: 50%;
-		background-color: #fff;
-		cursor: pointer;
-	}
-	input[type='range']:active::-moz-range-thumb {
-		transform: scale(1.2);
-		background: #007db5;
-	}
-	input[type='range']::-ms-track {
-		width: 100%;
-		height: 3px;
-		cursor: pointer;
-		background: transparent;
-		border: solid transparent;
-		color: transparent;
-	}
-	input[type='range']::-ms-fill-lower {
-		background-color: #007db5;
-	}
-	input[type='range']::-ms-fill-upper {
-		background: linear-gradient(
-			to right,
-			rgba(0, 125, 181, 0.6) var(--buffered-width),
-			rgba(0, 125, 181, 0.2) var(--buffered-width)
-		);
-	}
-	input[type='range']::-ms-thumb {
-		box-sizing: content-box;
-		border: 1px solid #007db5;
-		height: 15px;
-		width: 15px;
-		border-radius: 50%;
-		background-color: #fff;
-		cursor: pointer;
-	}
-	input[type='range']:active::-ms-thumb {
-		transform: scale(1.2);
-		background: #007db5;
 	}
 </style>
