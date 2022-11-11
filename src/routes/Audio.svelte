@@ -197,7 +197,7 @@
 <!-- Checking of the author has no picture, then use default
 this is needed since vite doesn't play nice with onerror fallbacks -->
 {#if audios[currentTrack].author == 'الشيخ أبو مدين الغوث'}
-	<img src="/portraits/الله.jpg" alt="صورة الاسم" loading="lazy" />
+	<img id="author" src="/portraits/الله.jpg" alt="صورة الاسم" loading="lazy" />
 {:else}
 	<img
 		id="author"
