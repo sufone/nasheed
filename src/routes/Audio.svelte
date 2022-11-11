@@ -13,6 +13,9 @@
 		let playState = 'play';
 		let muteState = 'unmute';
 
+		// my additions
+		const nextButton = document.getElementById('next-icon');
+
 		const playAnimation = lottieWeb.loadAnimation({
 			container: playIconContainer,
 			path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
@@ -45,6 +48,25 @@
 				cancelAnimationFrame(raf);
 				playState = 'play';
 			}
+		});
+		// my addition for next song
+		nextButton.addEventListener('click', () => {
+			// if (playState === 'play') {
+			// 	audio.play();
+			// 	playAnimation.playSegments([14, 27], true);
+			// 	requestAnimationFrame(whilePlaying);
+			// 	playState = 'pause';
+			// } else {
+			// 	audio.pause();
+			// 	playAnimation.playSegments([0, 14], true);
+			// 	cancelAnimationFrame(raf);
+			// 	playState = 'play';
+			// }
+			// audio.pause();
+			// playState = 'pause';
+			generateRandomNumber()
+			// audio.play();
+			// playState = 'play';
 		});
 
 		muteIconContainer.addEventListener('click', () => {
@@ -302,7 +324,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<input type="range" id="volume-slider" max="100" value="100" />
 	<button id="mute-icon" />
 </div>
-<button on:click={() => generateRandomNumber()}>التالي</button>
+<button id="next-icon">التالي</button>
 
 <style>
 	img {
