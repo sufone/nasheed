@@ -6,7 +6,6 @@
 
 - Trim opening and ending silences from all audios (ffmpeg automate) - so can be programmatically optimized client size
 - optimize mp3s (avoid compressing until last choice, and even then: backup to D drive!)
-- Use anwar al khalaf font - add dua for authors
 - make title using aref ruqaa color
 - use md3 style
 - use blaze slider for circle shaped author portait, sliding loads a new track (and vice versa: new track means slide in)!
@@ -22,6 +21,8 @@
 - separate display of author from media playing, so its a autoplaying gallery, thus mention below the nashid who is the author. thus, have a separate card with different background with no elevation for nashid and author title
 - play button to pause when playing state, change shape to circle and lower elevation.
 
+## Done
+- Use anwar al khalaf font - add dua for authors
 
 ## Developing
 

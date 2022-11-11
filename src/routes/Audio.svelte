@@ -209,7 +209,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <div id="track-card">
 	<h1>{audios[currentTrack].qasidah}</h1>
-	<h2>{audios[currentTrack].author}</h2>
+	<h2>﵁ {audios[currentTrack].author}</h2>
 </div>
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
@@ -224,10 +224,12 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	h1 {
 		color: var(--color-theme-1);
 		margin: 0 0 2px 0;
+		font-weight: 700;
 	}
 	h2 {
 		color: var(--color-dim);
 		margin: 0 0 0 0;
+		font-weight: 700;
 	}
 	div#track-card {
 		background-color: #bfffd9;
