@@ -347,7 +347,6 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		--volume-before-width: 100%;
 		--buffered-width: 0%;
 		position: relative;
-		/* margin: 100px 2.5% auto 2.5%; */
 		width: 95%;
 		max-width: 500px;
 		height: 132px;
