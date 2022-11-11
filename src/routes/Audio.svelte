@@ -8,8 +8,6 @@
 		const playIconContainer = document.getElementById('play-icon');
 		const audioPlayerContainer = document.getElementById('audio-player-container');
 		const seekSlider = document.getElementById('seek-slider');
-		const volumeSlider = document.getElementById('volume-slider');
-		const muteIconContainer = document.getElementById('mute-icon');
 		let playState = 'play';
 		let muteState = 'unmute';
 
@@ -23,15 +21,6 @@
 			loop: false,
 			autoplay: false,
 			name: 'Play Animation'
-		});
-
-		const muteAnimation = lottieWeb.loadAnimation({
-			container: muteIconContainer,
-			path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/mute/mute.json',
-			renderer: 'svg',
-			loop: false,
-			autoplay: false,
-			name: 'Mute Animation'
 		});
 
 		playAnimation.goToAndStop(14, true);
@@ -69,35 +58,14 @@
 			// playState = 'play';
 		});
 
-		muteIconContainer.addEventListener('click', () => {
-			if (muteState === 'unmute') {
-				muteAnimation.playSegments([0, 15], true);
-				audio.muted = true;
-				muteState = 'mute';
-			} else {
-				muteAnimation.playSegments([15, 25], true);
-				audio.muted = false;
-				muteState = 'unmute';
-			}
-		});
-
 		const showRangeProgress = (rangeInput) => {
-			if (rangeInput === seekSlider)
-				audioPlayerContainer.style.setProperty(
-					'--seek-before-width',
-					(rangeInput.value / rangeInput.max) * 100 + '%'
-				);
-			else
-				audioPlayerContainer.style.setProperty(
-					'--volume-before-width',
-					(rangeInput.value / rangeInput.max) * 100 + '%'
-				);
+			audioPlayerContainer.style.setProperty(
+				'--seek-before-width',
+				(rangeInput.value / rangeInput.max) * 100 + '%'
+			);
 		};
 
 		seekSlider.addEventListener('input', (e) => {
-			showRangeProgress(e.target);
-		});
-		volumeSlider.addEventListener('input', (e) => {
 			showRangeProgress(e.target);
 		});
 
@@ -106,7 +74,6 @@
 		const audio = document.querySelector('audio');
 		const durationContainer = document.getElementById('duration');
 		const currentTimeContainer = document.getElementById('current-time');
-		const outputContainer = document.getElementById('volume-output');
 		let raf = null;
 
 		const calculateTime = (secs) => {
@@ -168,13 +135,6 @@
 			if (!audio.paused) {
 				requestAnimationFrame(whilePlaying);
 			}
-		});
-
-		volumeSlider.addEventListener('input', (e) => {
-			const value = e.target.value;
-
-			outputContainer.textContent = value;
-			audio.volume = value / 100;
 		});
 
 		/* Implementation of the Media Session API */
@@ -320,9 +280,6 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<span id="current-time" class="time">0:00</span>
 	<input type="range" id="seek-slider" max="100" value="0" />
 	<span id="duration" class="time">0:00</span>
-	<output id="volume-output">100</output>
-	<input type="range" id="volume-slider" max="100" value="100" />
-	<button id="mute-icon" />
 </div>
 <button id="next-icon">التالي</button>
 
@@ -374,9 +331,6 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	#play-icon {
 		margin: 20px 2.5% 10px 2.5%;
 	}
-	path {
-		stroke: #007db5;
-	}
 	.time {
 		display: inline-block;
 		width: 37px;
@@ -385,35 +339,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		margin: 28.5px 0 18.5px 0;
 		float: left;
 	}
-	output {
-		display: inline-block;
-		width: 32px;
-		text-align: center;
-		font-size: 20px;
-		margin: 10px 2.5% 0 5%;
-		float: left;
-		clear: left;
-	}
-	#volume-slider {
-		margin: 10px 2.5%;
-		width: 58%;
-	}
-	#volume-slider::-webkit-slider-runnable-track {
-		background: rgba(0, 125, 181, 0.6);
-	}
-	#volume-slider::-moz-range-track {
-		background: rgba(0, 125, 181, 0.6);
-	}
-	#volume-slider::-ms-fill-upper {
-		background: rgba(0, 125, 181, 0.6);
-	}
-	#volume-slider::before {
-		width: var(--volume-before-width);
-	}
-	#mute-icon {
-		margin: 0 2.5%;
-	}
-	input[type='range'] {
+		input[type='range'] {
 		position: relative;
 		-webkit-appearance: none;
 		width: 48%;
