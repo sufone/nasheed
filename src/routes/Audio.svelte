@@ -220,9 +220,13 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<span id="duration" class="time">0:00</span>
 <!-- <button id="next-icon">التالي</button> -->
 
+
 <style>
-	h1, h2 {
+	h1 {
 		color: var(--color-theme-1)
+	}
+	h2 {
+		color: var(--color-dim);
 	}
 	#current-time,
 	#seek-slider,
