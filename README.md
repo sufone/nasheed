@@ -16,6 +16,7 @@
 - add more off my favs from yt
 - make portaits all square 
 - make it mobile first (and only at first)
+- lyrics in text form!
 
 
 ## Developing
