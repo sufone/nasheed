@@ -2,7 +2,6 @@
 	// @ts-nocheck
 
 	import { onMount } from 'svelte';
-	import lottieWeb from 'lottie-web';
 
 	onMount(async () => {
 		const playIconContainer = document.getElementById('play-icon');
@@ -14,27 +13,14 @@
 		// my additions
 		const nextButton = document.getElementById('next-icon');
 
-		const playAnimation = lottieWeb.loadAnimation({
-			container: playIconContainer,
-			path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
-			renderer: 'svg',
-			loop: false,
-			autoplay: false,
-			name: 'Play Animation'
-		});
 
-		playAnimation.goToAndStop(14, true);
 
 		playIconContainer.addEventListener('click', () => {
 			if (playState === 'play') {
 				audio.play();
-				playAnimation.playSegments([14, 27], true);
-				requestAnimationFrame(whilePlaying);
 				playState = 'pause';
 			} else {
 				audio.pause();
-				playAnimation.playSegments([0, 14], true);
-				cancelAnimationFrame(raf);
 				playState = 'play';
 			}
 		});
@@ -106,7 +92,6 @@
 				'--seek-before-width',
 				`${(seekSlider.value / seekSlider.max) * 100}%`
 			);
-			raf = requestAnimationFrame(whilePlaying);
 		};
 
 		if (audio.readyState > 0) {
@@ -125,16 +110,12 @@
 
 		seekSlider.addEventListener('input', () => {
 			currentTimeContainer.textContent = calculateTime(seekSlider.value);
-			if (!audio.paused) {
-				cancelAnimationFrame(raf);
-			}
+			
 		});
 
 		seekSlider.addEventListener('change', () => {
 			audio.currentTime = seekSlider.value;
-			if (!audio.paused) {
-				requestAnimationFrame(whilePlaying);
-			}
+	
 		});
 
 		/* Implementation of the Media Session API */
@@ -175,26 +156,18 @@
 			navigator.mediaSession.setActionHandler('play', () => {
 				if (playState === 'play') {
 					audio.play();
-					playAnimation.playSegments([14, 27], true);
-					requestAnimationFrame(whilePlaying);
 					playState = 'pause';
 				} else {
 					audio.pause();
-					playAnimation.playSegments([0, 14], true);
-					cancelAnimationFrame(raf);
 					playState = 'play';
 				}
 			});
 			navigator.mediaSession.setActionHandler('pause', () => {
 				if (playState === 'play') {
 					audio.play();
-					playAnimation.playSegments([14, 27], true);
-					requestAnimationFrame(whilePlaying);
 					playState = 'pause';
 				} else {
 					audio.pause();
-					playAnimation.playSegments([0, 14], true);
-					cancelAnimationFrame(raf);
 					playState = 'play';
 				}
 			});
@@ -217,8 +190,6 @@
 				audioPlayerContainer.style.setProperty('--seek-before-width', '0%');
 				currentTimeContainer.textContent = '0:00';
 				if (playState === 'pause') {
-					playAnimation.playSegments([0, 14], true);
-					cancelAnimationFrame(raf);
 					playState = 'play';
 				}
 			});
@@ -284,6 +255,9 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 <button id="next-icon">التالي</button>
 
 <style>
+	#current-time, #seek-slider, #duration {
+		display: none;
+	}
 	img {
 		border-radius: 50%;
 		width: 200px;
@@ -304,21 +278,11 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		--volume-before-width: 100%;
 		--buffered-width: 0%;
 		position: relative;
-		width: 95%;
-		max-width: 500px;
-		height: 132px;
-		background: #fff;
+		background-color: #006C46;
+		border-radius: 18px;
+		padding: 15px 15px;
 	}
-	#audio-player-container::before {
-		position: absolute;
-		content: '';
-		width: calc(100% + 4px);
-		height: calc(100% + 4px);
-		left: -2px;
-		top: -2px;
-		background: linear-gradient(to left, #007db5, #ff8a00);
-		z-index: -1;
-	}
+
 	p {
 		position: absolute;
 		top: -18px;
@@ -329,7 +293,8 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		background: #fff;
 	}
 	#play-icon {
-		margin: 20px 2.5% 10px 2.5%;
+		/* margin: 20px 2.5% 10px 2.5%; */
+		stroke-opacity: 0;
 	}
 	.time {
 		display: inline-block;
