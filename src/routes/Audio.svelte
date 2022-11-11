@@ -26,7 +26,6 @@
 		// 	generateRandomNumber();
 		// });
 
-
 		seekSlider.addEventListener('input', (e) => {
 			showRangeProgress(e.target);
 		});
@@ -55,13 +54,11 @@
 
 		const displayBufferedAmount = () => {
 			const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
-
 		};
 
 		const whilePlaying = () => {
 			seekSlider.value = Math.floor(audio.currentTime);
 			currentTimeContainer.textContent = calculateTime(seekSlider.value);
-
 		};
 
 		if (audio.readyState > 0) {
@@ -203,30 +200,41 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<img src="/portraits/الله.jpg" alt="صورة الاسم" loading="lazy" />
 {:else}
 	<img
-		id='author'
+		id="author"
 		alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
 		loading="lazy"
 		src="/portraits/{audios[currentTrack].author}.jpg"
 	/>
 {/if}
 
-<h2>{audios[currentTrack].author}</h2>
-<h1>{audios[currentTrack].qasidah}</h1>
-	<audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
-	<!-- <p>audio player ish</p> -->
-	<button id="play-icon"><img src="/play.svg" /></button>
-	<span id="current-time" class="time">0:00</span>
-	<input type="range" id="seek-slider" max="100" value="0" />
-	<span id="duration" class="time">0:00</span>
+<div id="track-card">
+	<h1>{audios[currentTrack].qasidah}</h1>
+	<h2>{audios[currentTrack].author}</h2>
+</div>
+
+<audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
+<!-- <p>audio player ish</p> -->
+<button id="play-icon"><img src="/play.svg" /></button>
+<span id="current-time" class="time">0:00</span>
+<input type="range" id="seek-slider" max="100" value="0" />
+<span id="duration" class="time">0:00</span>
+
 <!-- <button id="next-icon">التالي</button> -->
-
-
 <style>
 	h1 {
-		color: var(--color-theme-1)
+		color: var(--color-theme-1);
+		margin: 0 0 2px 0;
 	}
 	h2 {
 		color: var(--color-dim);
+		margin: 0 0 0 0;
+	}
+	div#track-card {
+		background-color: #bfffd9;
+		border-radius: 18px;
+		text-align: center;
+		padding: 30px 20px;
+		margin: -15px 0 90px 0;
 	}
 	#current-time,
 	#seek-slider,
@@ -234,11 +242,12 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		display: none;
 	}
 	img#author {
+		margin: 30px 0 0 0; 
 		border-radius: 50%;
+		z-index: 10;
 		width: 200px;
 		height: 200px;
-		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	}
 	button {
 		padding: 0;
@@ -265,7 +274,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		background-color: #006c46;
 		border-radius: 18px;
 		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-		}
+	}
 	#play-icon > img {
 		width: 60px;
 		height: 60px;

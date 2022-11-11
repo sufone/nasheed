@@ -16,10 +16,11 @@
 - add more off my favs from yt
 - make portaits all square 
 - make it mobile first (and only at first)
-- lyrics in text form!
+- lyrics in text form! have a button to activate at the bottom of the tracktitle card
 - expose id on url (allow selection and sharing specific!), update as updates along with pg title
 - setup media navigator api better
 - separate display of author from media playing, so its a autoplaying gallery, thus mention below the nashid who is the author. thus, have a separate card with different background with no elevation for nashid and author title
+- play button to pause when playing state, change shape to circle and lower elevation.
 
 
 ## Developing
