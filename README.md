@@ -18,6 +18,7 @@
 - make it mobile first (and only at first)
 - lyrics in text form!
 - expose id on url (allow selection and sharing specific!), update as updates along with pg title
+- setup media navigator api better
 
 
 ## Developing
