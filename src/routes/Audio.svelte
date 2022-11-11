@@ -53,7 +53,7 @@
 			// }
 			// audio.pause();
 			// playState = 'pause';
-			generateRandomNumber()
+			generateRandomNumber();
 			// audio.play();
 			// playState = 'play';
 		});
