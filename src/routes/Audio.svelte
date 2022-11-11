@@ -293,7 +293,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 <h1>{audios[currentTrack].qasidah}</h1>
 <div id="audio-player-container">
 	<audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
-	<p>audio player ish</p>
+	<!-- <p>audio player ish</p> -->
 	<button id="play-icon" />
 	<span id="current-time" class="time">0:00</span>
 	<input type="range" id="seek-slider" max="100" value="0" />
@@ -325,7 +325,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		--volume-before-width: 100%;
 		--buffered-width: 0%;
 		position: relative;
-		margin: 100px 2.5% auto 2.5%;
+		/* margin: 100px 2.5% auto 2.5%; */
 		width: 95%;
 		max-width: 500px;
 		height: 132px;
