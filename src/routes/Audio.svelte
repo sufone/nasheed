@@ -203,6 +203,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<img src="/portraits/الله.jpg" alt="صورة الاسم" loading="lazy" />
 {:else}
 	<img
+		id='author'
 		alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
 		loading="lazy"
 		src="/portraits/{audios[currentTrack].author}.jpg"
@@ -228,10 +229,12 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	#duration {
 		display: none;
 	}
-	img {
+	img#author {
 		border-radius: 50%;
 		width: 200px;
 		height: 200px;
+		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
 	}
 	button {
 		padding: 0;
@@ -257,8 +260,8 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		height: 75px;
 		background-color: #006c46;
 		border-radius: 18px;
-
-	}
+		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+		}
 	#play-icon > img {
 		width: 60px;
 		height: 60px;
