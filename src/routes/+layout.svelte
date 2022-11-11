@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>دواوين العارفين بأنغام المحبين</p>
+		<a href="https://www.youtube.com/channel/UC6x-5eSpcaKPrfddPd8PP9w"><p>دواوين العارفين بأنغام المحبين</p></a>
 	</footer>
 </div>
 
@@ -43,7 +43,9 @@
 	}
 
 	footer a {
-		font-weight: bold;
+		font-weight: normal;
+		color: var(--color-dim);
+
 	}
 
 	@media (min-width: 480px) {
