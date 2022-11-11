@@ -19,6 +19,7 @@
 - lyrics in text form!
 - expose id on url (allow selection and sharing specific!), update as updates along with pg title
 - setup media navigator api better
+- separate display of author from media playing, so its a autoplaying gallery, thus mention below the nashid who is the author. thus, have a separate card with different background with no elevation for nashid and author title
 
 
 ## Developing
