@@ -277,12 +277,18 @@
 	}
 </script>
 
-<!-- <img
-	alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
-	loading="lazy"
-	src="/portraits/{audios[currentTrack].author}.jpg"
-	onerror="this.onerror=null; this.src='/portraits/الله.jpg'"
-/> -->
+<!-- Checking of the author has no picture, then use default
+this is needed since vite doesn't play nice with onerror fallbacks -->
+{#if (audios[currentTrack].author = 'الشيخ أبو مدين الغوث')}
+	<img src="/portraits/الله.jpg" alt="صورة الاسم" loading="lazy" />
+{:else}
+	<img
+		alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
+		loading="lazy"
+		src="/portraits/{audios[currentTrack].author}.jpg"
+	/>
+{/if}
+
 <h2>{audios[currentTrack].author}</h2>
 <h1>{audios[currentTrack].qasidah}</h1>
 <div id="audio-player-container">
