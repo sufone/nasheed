@@ -7,7 +7,6 @@
 - Trim opening and ending silences from all audios (ffmpeg automate) - so can be programmatically optimized client size
 - optimize mp3s (avoid compressing until last choice, and even then: backup to D drive!)
 - make title using aref ruqaa color
-- use md3 style
 - use blaze slider for circle shaped author portait, sliding loads a new track (and vice versa: new track means slide in)!
 - optimize author portaits, use svelte-image
 - re-introduce header and footer from layout file
@@ -23,6 +22,8 @@
 
 ## Done
 - Use anwar al khalaf font - add dua for authors
+- use md3 style
+
 
 ## Developing
 
