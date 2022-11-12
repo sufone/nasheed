@@ -113,6 +113,8 @@
 					playState = 'play';
 				}
 			});
+
+			// NO CLUE IF THESE WORK SINCE I REMOVED THOSE COMPONENTS
 			navigator.mediaSession.setActionHandler('seekbackward', (details) => {
 				audio.currentTime = audio.currentTime - (details.seekOffset || 10);
 			});
@@ -191,7 +193,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 <!-- <p>audio player ish</p> -->
-<button id="play-icon" class={playState}><img alt="play icon" src="/{playState}.svg" /></button>
+<button id="play-icon" class={playState}><img alt="{playState} icon" src="/{playState}.svg" /></button>
 <span id="current-time" class="time">0:00</span>
 <input type="range" id="seek-slider" max="100" value="0" />
 <span id="duration" class="time">0:00</span>
