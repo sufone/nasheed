@@ -251,7 +251,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		z-index: 10;
 		width: 200px;
 		height: 200px;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		box-shadow: rgba(0, 33, 18, 0.5)0px 3px 8px;
 	}
 	button {
 		padding: 0;
@@ -277,7 +277,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		height: 75px;
 		background-color: #006c46;
 		border-radius: 18px;
-		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+		box-shadow: rgba(0, 33, 18, 0.19) 0px 10px 20px, rgba(0, 33, 18, 0.23) 0px 6px 6px;
 		line-height: 0; /* fixes large height from arabic font */
 	}
 	#play-icon > img {
