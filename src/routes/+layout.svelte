@@ -39,6 +39,8 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
+		color: inherit;
+		background-color: inherit;
 	}
 
 	a {
