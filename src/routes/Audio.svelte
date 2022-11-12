@@ -92,7 +92,11 @@
 				album: 'دواوين العرافين بأنغام المحبين',
 				artwork: [
 					// and if doesn't find: no image only, title and artist still work!
-					{ src: '/portraits/'+ audios[currentTrack].author +'.jpg', sizes: '96x96', type: 'image/png' }
+					{
+						src: '/portraits/' + audios[currentTrack].author + '.jpg',
+						sizes: '96x96',
+						type: 'image/png'
+					}
 				]
 			});
 			navigator.mediaSession.setActionHandler('play', () => {
