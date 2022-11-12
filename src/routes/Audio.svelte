@@ -214,7 +214,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 <!-- <p>audio player ish</p> -->
-<button id="play-icon"><img src="/play.svg" /></button>
+<button id="play-icon"><img alt="play icon" src="/play.svg" /></button>
 <span id="current-time" class="time">0:00</span>
 <input type="range" id="seek-slider" max="100" value="0" />
 <span id="duration" class="time">0:00</span>
@@ -230,13 +230,15 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		color: var(--color-dim);
 		margin: 0 0 0 0;
 		font-weight: 700;
+		font-size: larger;
 	}
 	div#track-card {
 		background-color: #bfffd9;
 		border-radius: 18px;
 		text-align: center;
-		padding: 30px 20px;
-		margin: -15px 0 90px 0;
+		padding: 30px 20px 20px 20px;
+		margin: -30px 0 90px 0;
+		min-width: 300px;
 	}
 	#current-time,
 	#seek-slider,
