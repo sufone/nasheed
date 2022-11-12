@@ -246,7 +246,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		display: none;
 	}
 	img#author {
-		margin: 30px 0 0 0; 
+		margin: 30px 0 0 0;
 		border-radius: 50%;
 		z-index: 10;
 		width: 200px;
@@ -278,6 +278,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		background-color: #006c46;
 		border-radius: 18px;
 		box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+		line-height: 0; /* fixes large height from arabic font */
 	}
 	#play-icon > img {
 		width: 60px;
