@@ -3,10 +3,11 @@
 
 	import { onMount } from 'svelte';
 
+	let playState = 'play';
+
 	onMount(async () => {
 		const playIconContainer = document.getElementById('play-icon');
 		const seekSlider = document.getElementById('seek-slider');
-		let playState = 'play';
 		let muteState = 'unmute';
 
 		// my additions
@@ -214,7 +215,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 <!-- <p>audio player ish</p> -->
-<button id="play-icon"><img alt="play icon" src="/play.svg" /></button>
+<button id="play-icon" class={playState}><img alt="play icon" src="/{playState}.svg" /></button>
 <span id="current-time" class="time">0:00</span>
 <input type="range" id="seek-slider" max="100" value="0" />
 <span id="duration" class="time">0:00</span>
@@ -234,7 +235,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	}
 	div#track-card {
 		background-color: #bfffd9;
-		border-radius: 18px;
+		border-radius: 12px;
 		text-align: center;
 		padding: 30px 20px 20px 20px;
 		margin: -30px 0 90px 0;
@@ -251,7 +252,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		z-index: 10;
 		width: 200px;
 		height: 200px;
-		box-shadow: rgba(0, 33, 18, 0.5)0px 3px 8px;
+		box-shadow: rgba(0, 33, 18, 0.5) 0px 3px 8px;
 	}
 	button {
 		padding: 0;
@@ -273,16 +274,29 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		background: #fff;
 	}
 	#play-icon {
-		width: 75px;
-		height: 75px;
 		background-color: #006c46;
-		border-radius: 18px;
 		box-shadow: rgba(0, 33, 18, 0.19) 0px 10px 20px, rgba(0, 33, 18, 0.23) 0px 6px 6px;
 		line-height: 0; /* fixes large height from arabic font */
+		transition: all 0.3s ease;
 	}
-	#play-icon > img {
+	#play-icon.play {
+		width: 75px;
+		height: 75px;
+		border-radius: 28px;
+	}
+	#play-icon.pause {
+		width: 70px;
+		height: 70px;
+		border-radius: 50px;
+		box-shadow: rgba(0, 33, 18, 0.5) 0px 1px 4px;
+	}
+	#play-icon.play > img {
 		width: 60px;
 		height: 60px;
+	}
+	#play-icon.pause > img {
+		width: 40px;
+		height: 40px;
 	}
 	.time {
 		display: inline-block;
