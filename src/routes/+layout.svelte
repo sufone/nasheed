@@ -19,7 +19,8 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 95vh;
+		min-height: 90vh;
+		max-height: 95vh;
 	}
 
 	main {
