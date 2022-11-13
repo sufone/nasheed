@@ -5,7 +5,6 @@
 ## Plan
 - add more off my favs from yt
 - add yt source urls to sources json
-- preload pause icon... now it has to load
 
 - Trim opening and ending silences from all audios (ffmpeg automate) - so  programmatically optimized silences can be added client side
 - optimize mp3s (avoid compressing until last choice, and even then: backup to D drive!)
@@ -25,6 +24,7 @@
 - setup media navigator api better
 - make author portaits all square 
 - make it mobile first (and only at first)
+- preload pause icon... now it has to load
 
 
 ## Dropped

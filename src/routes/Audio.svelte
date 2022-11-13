@@ -185,7 +185,7 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<img
 		id="author"
 		alt="صورة الشيخ المؤلف: {audios[currentTrack].author}"
-		loading="lazy"
+		loading="eager"
 		src="/portraits/{audios[currentTrack].author}.jpg"
 	/>
 {/if}
@@ -197,7 +197,14 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 <!-- <p>audio player ish</p> -->
-<button id="play-icon" class={playState}><img alt="{playState} icon" src="/{playState}.svg" /></button>
+<button id="play-icon" class={playState}>
+	<!-- can't do it inline, otherwise pause icon is slow to load -->
+	{#if playState == 'play'}
+		<img loading="eager" alt="{playState} icon" src="/play.svg" />
+	{:else}
+		<img loading="eager" alt="{playState} icon" src="/pause.svg" />
+	{/if}
+</button>
 <span id="current-time" class="time">0:00</span>
 <input type="range" id="seek-slider" max="100" value="0" />
 <span id="duration" class="time">0:00</span>
