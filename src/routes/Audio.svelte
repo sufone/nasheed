@@ -194,6 +194,9 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	<h1>{audios[currentTrack].qasidah}</h1>
 	<h2>﵁ {audios[currentTrack].author}</h2>
 </div>
+<button on:click={() => location.reload()} id="refresh">
+	<img loading="eager" alt="refresh icon" src="/refresh.svg" />
+</button>
 
 <audio src="/audio/{audios[currentTrack].filename}.mp3" preload="metadata" loop />
 <!-- <p>audio player ish</p> -->
@@ -227,8 +230,9 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		border-radius: 12px;
 		text-align: center;
 		padding: 30px 20px 20px 20px;
-		margin: -30px 0 90px 0;
+		margin: -30px 0 0px 0;
 		min-width: 300px;
+		box-shadow: rgba(0, 33, 18, 0.12) 0px 1px 3px, rgba(0, 33, 18, 0.24) 0px 1px 2px;
 	}
 	#current-time,
 	#seek-slider,
@@ -252,21 +256,13 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 		width: 40px;
 		height: 40px;
 		float: left;
-	}
-	p {
-		position: absolute;
-		top: -18px;
-		right: 5%;
-		padding: 0 5px;
-		margin: 0;
-		font-size: 28px;
-		background: #fff;
+		background-color: #006c46;
+		line-height: 0; /* fixes large height from arabic font */
 	}
 	#play-icon {
-		background-color: #006c46;
 		box-shadow: rgba(0, 33, 18, 0.19) 0px 10px 20px, rgba(0, 33, 18, 0.23) 0px 6px 6px;
-		line-height: 0; /* fixes large height from arabic font */
 		transition: all 0.3s ease;
+		margin-top: 80px;
 	}
 	#play-icon.play {
 		width: 75px;
@@ -286,6 +282,25 @@ this is needed since vite doesn't play nice with onerror fallbacks -->
 	#play-icon.pause > img {
 		width: 40px;
 		height: 40px;
+	}
+	#refresh > img {
+		width: 20px;
+		height: 20px;
+	}
+	#refresh {
+		text-align: center;
+		border-radius: 100px;
+		background-color: #f4fff5;
+		margin: 10px 0 0 0;
+		/* z-index: 10; */
+		/* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+		width: 50px;
+		height: 30px;
+		color: white;
+		border: 1px solid grey;
+	}
+	#refresh > p {
+		margin: 5px 0 0px 0;
 	}
 	.time {
 		display: inline-block;
