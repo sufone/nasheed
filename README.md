@@ -15,6 +15,7 @@
 - separate display of author from media playing, so its a autoplaying gallery, thus mention below the nashid who is the author. thus, have a separate card with different background with no elevation for nashid and author title
 - redo algorithm (fisher yates, https://softwareengineering.stackexchange.com/questions/194480/id-like-to-write-an-ultimate-shuffle-algorithm-to-sort-my-mp3-collection) for order: just make an array that can be checked and used to load next song when ready: thus, also have: an event handler when the current track ends-dont just loop
 - optimize titles to be shorter
+- move randomizer code to server and use ssr?
 
 ## Done
 - Use anwar al khalaf font - add dua for authors
@@ -26,7 +27,7 @@
 - make it mobile first (and only at first)
 - preload pause icon... now it has to load
 - add more off my favs from yt
-
+- solve double random (needed to disable ssr)
 
 ## Dropped
 - make title using aref ruqaa color
